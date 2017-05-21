@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) Polyconseil SAS. All rights reserved.
 
-from __future__ import absolute_import, division, print_function, unicode_literals
+
 
 import shutil
 import tempfile
@@ -12,7 +12,7 @@ import types
 try:
     import configparser
 except ImportError:
-    import ConfigParser as configparser  # noqa
+    import configparser as configparser  # noqa
 # pylint: enable=unused-import,import-error
 
 

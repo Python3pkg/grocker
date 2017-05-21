@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) Polyconseil SAS. All rights reserved.
-from __future__ import absolute_import, print_function, unicode_literals
+
 import argparse
 import base64
 import logging
@@ -14,7 +14,7 @@ import zlib
 try:  # Python 3+
     import configparser
 except ImportError:  # Python 2.7
-    import ConfigParser as configparser
+    import configparser as configparser
 
 
 WHEELS_DIRECTORY = os.path.expanduser('~/packages')

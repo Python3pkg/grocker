@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) Polyconseil SAS. All rights reserved.
 
-from __future__ import absolute_import, division, print_function, unicode_literals
+
 import hashlib
 import itertools
 import os.path
@@ -33,7 +33,7 @@ def config_identifier(config):
     dependencies = unit_list(get_dependencies(config, with_build_dependencies=True))
     repositories = RECORD_SEPARATOR.join(
         unit_list([name] + [cfg[x] for x in sorted(cfg)])
-        for name, cfg in config['repositories'].items()
+        for name, cfg in list(config['repositories'].items())
     )
     data = GROUP_SEPARATOR.join([
         dependencies,
@@ -104,7 +104,7 @@ def get_build_dependencies(dependency_list):
     """
     for dependency in dependency_list:
         if isinstance(dependency, dict):
-            for value_or_list in dependency.values():
+            for value_or_list in list(dependency.values()):
                 if isinstance(value_or_list, list):
                     for value in value_or_list:
                         yield value
@@ -154,6 +154,6 @@ def parse_config(config_paths, **kwargs):
         project_config = helpers.load_yaml(config_path)
         config.update(project_config or {})
 
-    config.update({k: v for k, v in kwargs.items() if v})
+    config.update({k: v for k, v in list(kwargs.items()) if v})
 
     return config

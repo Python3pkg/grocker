@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) Polyconseil SAS. All rights reserved.
 
-from __future__ import absolute_import, division, print_function, unicode_literals
+
 
 import base64
 import logging
@@ -33,7 +33,7 @@ def get_pip_env(pip_conf):
         'PIP_INDEX_URL': get(config, 'global', 'index-url'),
         'PIP_EXTRA_INDEX_URL': get(config, 'global', 'extra-index-url'),
     }
-    env = {k: v for k, v in env.items() if v}
+    env = {k: v for k, v in list(env.items()) if v}
     logger.debug('pip using env: %s', env)
     return env
 
